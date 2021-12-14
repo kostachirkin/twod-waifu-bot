@@ -107,6 +107,7 @@ def start(message):
 
 def get_sex(message):
     if message.text == '/stop':
+        del users[message.chat.id]
         return
     if message.text not in ['Мужской', 'Женский']:
         msg = bot.send_message(message.chat.id, 'Пол может принять только одно из двух значений: "Мужской" и "Женский". Укажите ваш пол заново.')
@@ -144,6 +145,7 @@ def get_sex(message):
 
 def get_age(message):
     if message.text == '/stop':
+        del users[message.chat.id]
         return
     num = -1
     try:
@@ -195,6 +197,7 @@ def get_age(message):
 
 def get_place_pref_1(message):
     if message.text == '/stop':
+        del users[message.chat.id]
         return
     keyboard = types.ReplyKeyboardMarkup(one_time_keyboard=True)
     if message.text not in ['Да', 'Нет']:
@@ -211,6 +214,7 @@ def get_place_pref_1(message):
 
 def get_place_pref_2(message):
     if message.text == '/stop':
+        del users[message.chat.id]
         return
     if message.text not in ['С Земли', 'С другой планеты', 'Из параллельного мира']:
         msg = bot.send_message(message.chat.id,
@@ -254,6 +258,7 @@ def get_place_pref_2(message):
 
 def get_archetype_pref_1(message):
     if message.text == '/stop':
+        del users[message.chat.id]
         return
     if message.text not in ['Да', 'Нет']:
         msg = bot.send_message(message.chat.id,
@@ -263,9 +268,9 @@ def get_archetype_pref_1(message):
         user = users[message.chat.id]
 
         if message.text == 'Да':
-            user.archetype_pref += 'Активный'
+            user.archetype_pref += 'активный'
         elif message.text == 'Нет':
-            user.archetype_pref += 'Не Активный'
+            user.archetype_pref += 'не активный'
 
         keyboard = types.ReplyKeyboardMarkup(one_time_keyboard=True)
         keyboard.add('Да', 'Нет')
@@ -274,6 +279,7 @@ def get_archetype_pref_1(message):
 
 def get_archetype_pref_2(message):
     if message.text == '/stop':
+        del users[message.chat.id]
         return
     if message.text not in ['Да', 'Нет']:
         msg = bot.send_message(message.chat.id,
@@ -283,9 +289,9 @@ def get_archetype_pref_2(message):
         user = users[message.chat.id]
 
         if message.text == 'Да':
-            user.archetype_pref += ', Храбрый'
+            user.archetype_pref += ', храбрый'
         elif message.text == 'Нет':
-            user.archetype_pref += ', Не Храбрый'
+            user.archetype_pref += ', не храбрый'
 
         keyboard = types.ReplyKeyboardMarkup(one_time_keyboard=True)
         keyboard.add('Да', 'Нет')
@@ -293,6 +299,7 @@ def get_archetype_pref_2(message):
         bot.register_next_step_handler(msg, get_archetype_pref_3)
 
 def get_archetype_pref_3(message):
+    del users[message.chat.id]
     if message.text == '/stop':
         return
     if message.text not in ['Да', 'Нет']:
@@ -303,9 +310,9 @@ def get_archetype_pref_3(message):
         user = users[message.chat.id]
 
         if message.text == 'Да':
-            user.archetype_pref += ', Странный'
+            user.archetype_pref += ', странный'
         elif message.text == 'Нет':
-            user.archetype_pref += ', Не Странный'
+            user.archetype_pref += ', не странный'
 
         if debug_mode:
             print(user.archetype_pref)
@@ -338,6 +345,7 @@ def get_archetype_pref_3(message):
 
 def get_blood_type(message):
     if message.text == '/stop':
+        del users[message.chat.id]
         return
     if message.text not in ['I', 'II', 'III', 'IV']:
         msg = bot.send_message(message.chat.id,
@@ -377,6 +385,7 @@ def get_blood_type(message):
 
 def get_zodiac_sign(message):
     if message.text == '/stop':
+        del users[message.chat.id]
         return
     if message.text not in ['Овен', 'Телец', 'Близнецы', 'Рак', 'Лев', 'Дева', 'Весы', 'Скорпион', 'Стрелец',
                          'Козерог', 'Водолей', 'Рыбы']:
@@ -418,6 +427,7 @@ def get_zodiac_sign(message):
 
 def get_problems_pref(message):
     if message.text == '/stop':
+        del users[message.chat.id]
         return
     if message.text not in ['Да', 'Нет']:
         msg = bot.send_message(message.chat.id,
@@ -459,6 +469,7 @@ def get_problems_pref(message):
 
 def get_secret_pref(message):
     if message.text == '/stop':
+        del users[message.chat.id]
         return
     if message.text not in ['Да', 'Нет']:
         msg = bot.send_message(message.chat.id,
@@ -500,6 +511,7 @@ def get_secret_pref(message):
 
 def get_work_pref(message):
     if message.text == '/stop':
+        del users[message.chat.id]
         return
     if message.text not in ['Да', 'Нет']:
         msg = bot.send_message(message.chat.id,
@@ -542,6 +554,7 @@ def get_work_pref(message):
 
 def get_favourite_1(message):
     if message.text == '/stop':
+        del users[message.chat.id]
         return
     if message.text not in ['Да', 'Нет']:
         msg = bot.send_message(message.chat.id,
@@ -584,6 +597,7 @@ def get_favourite_1(message):
 
 def get_favourite_2(message):
     if message.text == '/stop':
+        del users[message.chat.id]
         return
     if message.text not in ['Да', 'Нет']:
         msg = bot.send_message(message.chat.id,
@@ -626,6 +640,7 @@ def get_favourite_2(message):
 
 def get_favourite_3(message):
     if message.text == '/stop':
+        del users[message.chat.id]
         return
     if message.text not in ['Да', 'Нет']:
         msg = bot.send_message(message.chat.id,
@@ -669,6 +684,7 @@ def get_favourite_3(message):
 
 def get_favourite_4(message):
     if message.text == '/stop':
+        del users[message.chat.id]
         return
     if message.text not in ['Да']:
         msg = bot.send_message(message.chat.id,
@@ -706,6 +722,7 @@ def get_favourite_4(message):
 
 def get_growth(message):
     if message.text == '/stop':
+        del users[message.chat.id]
         return
     num = -1
     try:
@@ -761,6 +778,7 @@ def get_growth(message):
 
 def get_popularity_pref(message):
     if message.text == '/stop':
+        del users[message.chat.id]
         return
     if message.text not in ['Да', 'Нет']:
         msg = bot.send_message(message.chat.id,
@@ -802,6 +820,7 @@ def get_popularity_pref(message):
 
 def get_hair_pref(message):
     if message.text == '/stop':
+        del users[message.chat.id]
         return
     if message.text not in ['Да', 'Нет']:
         msg = bot.send_message(message.chat.id,
@@ -841,6 +860,7 @@ def get_hair_pref(message):
 
 def get_eyes_pref(message):
     if message.text == '/stop':
+        del users[message.chat.id]
         return
     if message.text not in ['Голубые', 'Карие', 'Розовые', 'Синие', 'Серые', 'Зеленые']:
         msg = bot.send_message(message.chat.id,
@@ -883,6 +903,8 @@ def send_best_wifu(message):
 
     with open(best_wifu_photo_path, 'rb') as best_wifu_photo:
         bot.send_animation(message.chat.id, animation=best_wifu_photo, caption='Ура, вы дошли до конца опроса. Ваш(а) вайфу: {}'.format(best_wifu_name))
+        
+    del users[message.chat.id]
 
 print('bot starting...')
 bot.polling(none_stop=True)
