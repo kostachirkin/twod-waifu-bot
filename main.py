@@ -106,6 +106,8 @@ def start(message):
     bot.register_next_step_handler(msg, get_sex)
 
 def get_sex(message):
+    if message.text == '/stop':
+        return
     if message.text not in ['Мужской', 'Женский']:
         msg = bot.send_message(message.chat.id, 'Пол может принять только одно из двух значений: "Мужской" и "Женский". Укажите ваш пол заново.')
         bot.register_next_step_handler(msg, get_sex)
@@ -141,6 +143,8 @@ def get_sex(message):
 
 
 def get_age(message):
+    if message.text == '/stop':
+        return
     num = -1
     try:
         num = int(message.text)
@@ -190,6 +194,8 @@ def get_age(message):
             bot.register_next_step_handler(msg, get_age)
 
 def get_place_pref_1(message):
+    if message.text == '/stop':
+        return
     keyboard = types.ReplyKeyboardMarkup(one_time_keyboard=True)
     if message.text not in ['Да', 'Нет']:
         msg = bot.send_message(message.chat.id,
@@ -204,6 +210,8 @@ def get_place_pref_1(message):
     bot.register_next_step_handler(msg, get_place_pref_2)
 
 def get_place_pref_2(message):
+    if message.text == '/stop':
+        return
     if message.text not in ['С Земли', 'С другой планеты', 'Из параллельного мира']:
         msg = bot.send_message(message.chat.id,
                                'Ответ может принимать только одно из трех значений: "С Земли", "С другой планеты" и "Из параллельного мира". Укажите ваш ответ заеово.')
@@ -245,6 +253,8 @@ def get_place_pref_2(message):
             bot.register_next_step_handler(msg, get_place_pref_2)
 
 def get_archetype_pref_1(message):
+    if message.text == '/stop':
+        return
     if message.text not in ['Да', 'Нет']:
         msg = bot.send_message(message.chat.id,
                                'Ответ может принимать только одно из двух значений: "Да", "Нет". Укажите ваш ответ заеово.')
@@ -255,7 +265,7 @@ def get_archetype_pref_1(message):
         if message.text == 'Да':
             user.archetype_pref += 'Активный'
         elif message.text == 'Нет':
-            user.archetype_pref += 'Не активный'
+            user.archetype_pref += 'Не Активный'
 
         keyboard = types.ReplyKeyboardMarkup(one_time_keyboard=True)
         keyboard.add('Да', 'Нет')
@@ -263,6 +273,8 @@ def get_archetype_pref_1(message):
         bot.register_next_step_handler(msg, get_archetype_pref_2)
 
 def get_archetype_pref_2(message):
+    if message.text == '/stop':
+        return
     if message.text not in ['Да', 'Нет']:
         msg = bot.send_message(message.chat.id,
                                'Ответ может принимать только одно из двух значений: "Да", "Нет". Укажите ваш ответ заеово.')
@@ -273,7 +285,7 @@ def get_archetype_pref_2(message):
         if message.text == 'Да':
             user.archetype_pref += ', Храбрый'
         elif message.text == 'Нет':
-            user.archetype_pref += ', Не храбрый'
+            user.archetype_pref += ', Не Храбрый'
 
         keyboard = types.ReplyKeyboardMarkup(one_time_keyboard=True)
         keyboard.add('Да', 'Нет')
@@ -281,6 +293,8 @@ def get_archetype_pref_2(message):
         bot.register_next_step_handler(msg, get_archetype_pref_3)
 
 def get_archetype_pref_3(message):
+    if message.text == '/stop':
+        return
     if message.text not in ['Да', 'Нет']:
         msg = bot.send_message(message.chat.id,
                                'Ответ может принимать только одно из двух значений: "Да", "Нет". Укажите ваш ответ заеово.')
@@ -291,7 +305,7 @@ def get_archetype_pref_3(message):
         if message.text == 'Да':
             user.archetype_pref += ', Странный'
         elif message.text == 'Нет':
-            user.archetype_pref += ', Не странный'
+            user.archetype_pref += ', Не Странный'
 
         if debug_mode:
             print(user.archetype_pref)
@@ -323,6 +337,8 @@ def get_archetype_pref_3(message):
             bot.register_next_step_handler(msg, get_archetype_pref_3)
 
 def get_blood_type(message):
+    if message.text == '/stop':
+        return
     if message.text not in ['I', 'II', 'III', 'IV']:
         msg = bot.send_message(message.chat.id,
                                'Группа крови может принимать только одно из четырех значений: "I", "II", "III", "IV". Укажите вашу группу крови заново.')
@@ -360,6 +376,8 @@ def get_blood_type(message):
             bot.register_next_step_handler(msg, get_blood_type)
 
 def get_zodiac_sign(message):
+    if message.text == '/stop':
+        return
     if message.text not in ['Овен', 'Телец', 'Близнецы', 'Рак', 'Лев', 'Дева', 'Весы', 'Скорпион', 'Стрелец',
                          'Козерог', 'Водолей', 'Рыбы']:
         msg = bot.send_message(message.chat.id,
@@ -399,6 +417,8 @@ def get_zodiac_sign(message):
             bot.register_next_step_handler(msg, get_zodiac_sign)
 
 def get_problems_pref(message):
+    if message.text == '/stop':
+        return
     if message.text not in ['Да', 'Нет']:
         msg = bot.send_message(message.chat.id,
                                'Ответ может принимать только одно из двух значений: "Да" и "Нет". Укажите вашу ответ заново.')
@@ -438,6 +458,8 @@ def get_problems_pref(message):
             bot.register_next_step_handler(msg, get_problems_pref)
 
 def get_secret_pref(message):
+    if message.text == '/stop':
+        return
     if message.text not in ['Да', 'Нет']:
         msg = bot.send_message(message.chat.id,
                                'Ответ может принимать только одно из двух значений: "Да" и "Нет". Укажите вашу ответ заново.')
@@ -477,6 +499,8 @@ def get_secret_pref(message):
             bot.register_next_step_handler(msg, get_secret_pref)
 
 def get_work_pref(message):
+    if message.text == '/stop':
+        return
     if message.text not in ['Да', 'Нет']:
         msg = bot.send_message(message.chat.id,
                                'Ответ может принимать только одно из двух значений: "Да" и "Нет". Укажите вашу ответ заново.')
@@ -517,6 +541,8 @@ def get_work_pref(message):
             bot.register_next_step_handler(msg, get_work_pref)
 
 def get_favourite_1(message):
+    if message.text == '/stop':
+        return
     if message.text not in ['Да', 'Нет']:
         msg = bot.send_message(message.chat.id,
                                'Ответ может принимать только одно из двух значений: "Да" и "Нет". Укажите ваш ответ заново.')
@@ -557,6 +583,8 @@ def get_favourite_1(message):
             bot.register_next_step_handler(msg, get_favourite_2)
 
 def get_favourite_2(message):
+    if message.text == '/stop':
+        return
     if message.text not in ['Да', 'Нет']:
         msg = bot.send_message(message.chat.id,
                                'Ответ может принимать только одно из двух значений: "Да" и "Нет". Укажите ваш ответ заново.')
@@ -597,6 +625,8 @@ def get_favourite_2(message):
             bot.register_next_step_handler(msg, get_favourite_3)
 
 def get_favourite_3(message):
+    if message.text == '/stop':
+        return
     if message.text not in ['Да', 'Нет']:
         msg = bot.send_message(message.chat.id,
                                'Ответ может принимать только одно из двух значений: "Да" и "Нет". Укажите ваш ответ заново.')
@@ -638,6 +668,8 @@ def get_favourite_3(message):
             bot.register_next_step_handler(msg, get_favourite_4)
 
 def get_favourite_4(message):
+    if message.text == '/stop':
+        return
     if message.text not in ['Да']:
         msg = bot.send_message(message.chat.id,
                                'У вас не осталось вариантов). Укажите ваш ответ заново.')
@@ -673,6 +705,8 @@ def get_favourite_4(message):
                 bot.register_next_step_handler(msg, get_favourite_1)
 
 def get_growth(message):
+    if message.text == '/stop':
+        return
     num = -1
     try:
         num = int(message.text)
@@ -726,6 +760,8 @@ def get_growth(message):
             bot.register_next_step_handler(msg, get_growth)
 
 def get_popularity_pref(message):
+    if message.text == '/stop':
+        return
     if message.text not in ['Да', 'Нет']:
         msg = bot.send_message(message.chat.id,
                                'Ответ может принимать только одно из двух значений: "Да" и "Нет". Укажите вашу ответ заново.')
@@ -765,6 +801,8 @@ def get_popularity_pref(message):
             bot.register_next_step_handler(msg, get_popularity_pref)
 
 def get_hair_pref(message):
+    if message.text == '/stop':
+        return
     if message.text not in ['Да', 'Нет']:
         msg = bot.send_message(message.chat.id,
                                'Ответ может принимать только одно из двух значений: "Да" и "Нет". Укажите вашу ответ заново.')
@@ -802,6 +840,8 @@ def get_hair_pref(message):
             bot.register_next_step_handler(msg, get_hair_pref)
 
 def get_eyes_pref(message):
+    if message.text == '/stop':
+        return
     if message.text not in ['Голубые', 'Карие', 'Розовые', 'Синие', 'Серые', 'Зеленые']:
         msg = bot.send_message(message.chat.id,
                                "Ответ может принимать только одно из значений: 'Голубые', 'Карие', 'Розовые', 'Синие', 'Серые', 'Зеленые'. Укажите вашу ответ заново.")
