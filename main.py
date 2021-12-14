@@ -299,8 +299,8 @@ def get_archetype_pref_2(message):
         bot.register_next_step_handler(msg, get_archetype_pref_3)
 
 def get_archetype_pref_3(message):
-    del users[message.chat.id]
     if message.text == '/stop':
+        del users[message.chat.id]
         return
     if message.text not in ['Да', 'Нет']:
         msg = bot.send_message(message.chat.id,
